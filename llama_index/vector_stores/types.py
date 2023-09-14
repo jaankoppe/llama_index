@@ -2,12 +2,13 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, List, Optional, Protocol, Sequence, Union, runtime_checkable
+from typing import (Any, Dict, List, Optional, Protocol, Sequence, Union,
+                    runtime_checkable)
 
 import fsspec
-
-from llama_index.bridge.pydantic import BaseModel, StrictFloat, StrictInt, StrictStr
-from llama_index.schema import BaseNode, BaseComponent, TextNode
+from llama_index.bridge.pydantic import (BaseModel, StrictFloat, StrictInt,
+                                         StrictStr)
+from llama_index.schema import BaseComponent, BaseNode, TextNode
 
 DEFAULT_PERSIST_DIR = "./storage"
 DEFAULT_PERSIST_FNAME = "vector_store.json"
@@ -54,6 +55,14 @@ class ExactMatchFilter(BaseModel):
     key: str
     value: Union[StrictInt, StrictFloat, StrictStr]
 
+class UniversalFilter(BaseModel):
+    """Universal metadata filter for vector stores.
+
+    This supports $gte, $lte, $in and all other filter types that requires a Dict to filter.
+    
+    """
+    key: str
+    value: Union[Dict, StrictInt, StrictFloat, StrictStr]
 
 class MetadataFilters(BaseModel):
     """Metadata filters for vector stores.
@@ -62,7 +71,7 @@ class MetadataFilters(BaseModel):
     TODO: support more advanced expressions.
     """
 
-    filters: List[ExactMatchFilter]
+    filters: List[Union[ExactMatchFilter, UniversalFilter]]
 
 
 class VectorStoreQuerySpec(BaseModel):
