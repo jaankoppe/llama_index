@@ -4,7 +4,7 @@ from pathlib import Path
 
 from setuptools import find_packages, setup
 
-DEFAULT_PACKAGE_NAME = "llama_index"
+DEFAULT_PACKAGE_NAME = "jaankoppe/llama_index"
 PACKAGE_NAME = os.environ.get("PACKAGE_NAME_OVERRIDE", DEFAULT_PACKAGE_NAME)
 
 with open(Path(__file__).absolute().parents[0] / "llama_index" / "VERSION") as _f:
@@ -32,15 +32,15 @@ install_requires = [
 ]
 
 setup(
-    author="Jerry Liu",
+    author="Jerry Liu, Jaan Koppe",
     name=PACKAGE_NAME,
     version=__version__,
     packages=find_packages(),
-    description="Interface between LLMs and your data",
+    description="Interface between LLMs and your data, added UniversalFilter for MetadataFilters",
     install_requires=install_requires,
     long_description=long_description,
     license="MIT",
-    url="https://github.com/jerryjliu/llama_index",
+    url="https://github.com/jaankoppe/llama_index",
     include_package_data=True,
     long_description_content_type="text/markdown",
 )
