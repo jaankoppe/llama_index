@@ -4,7 +4,7 @@ from pathlib import Path
 
 from setuptools import find_packages, setup
 
-DEFAULT_PACKAGE_NAME = "jaankoppe/llama_index"
+DEFAULT_PACKAGE_NAME = "jaankoppe-llama_index"
 PACKAGE_NAME = os.environ.get("PACKAGE_NAME_OVERRIDE", DEFAULT_PACKAGE_NAME)
 
 with open(Path(__file__).absolute().parents[0] / "llama_index" / "VERSION") as _f:
