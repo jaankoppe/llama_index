@@ -20,7 +20,7 @@ install_requires = [
     "sqlalchemy>=2.0.15",
     "numpy",
     "tenacity>=8.2.0,<9.0.0",
-    "openai>=0.26.4",
+    "openai>=0.26.4,<=0.28.1",
     "pandas",
     "urllib3<2",
     "fsspec>=2023.5.0",
